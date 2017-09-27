@@ -85,19 +85,20 @@ const RootQuery = new GraphQLObjectType({
       type: UserType,
       args: { id: { type: GraphQLString } },
       resolve(parentValue, args) {
-        return _.find(users, { id: args.id });
-        // return axios.get(`http://localhost:3000/users/${args.id}`)
-        //   .then(resp => resp.data);
+        // return _.find(users, { id: args.id });
+        return axios
+          .get(`http://localhost:3000/users/${args.id}`)
+          .then(resp => resp.data);
       }
     },
     company: {
       type: CompanyType,
       args: { id: { type: GraphQLString } },
       resolve(parentValue, args) {
-        return _.find(companies, { id: args.id });
-        // return axios
-        //   .get(`http://localhost:3000/companies/${args.id}`)
-        //   .then(resp => resp.data);
+        // return _.find(companies, { id: args.id });
+        return axios
+          .get(`http://localhost:3000/companies/${args.id}`)
+          .then(resp => resp.data);
       }
     }
   }
